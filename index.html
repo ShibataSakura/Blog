@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Daily Moments</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">My Daily Moments</h1>
+      <nav class="nav" aria-label="メインメニュー">
+        <button class="nav__toggle" aria-expanded="false" aria-controls="nav-menu">☰</button>
+        <ul id="nav-menu" class="nav__menu">
+          <li><a href="#about">コンセプト</a></li>
+          <li><a href="#featured">今日のハイライト</a></li>
+          <li><a href="#journal">デイリーノート</a></li>
+          <li><a href="#timeline">振り返り</a></li>
+        </ul>
+      </nav>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="false" aria-label="テーマ切替">🌙</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="about">
+      <div class="container hero__content">
+        <div>
+          <p class="hero__eyebrow">日々の気づきを大切に</p>
+          <h2 class="hero__title">ふとした瞬間を、物語に。</h2>
+          <p class="hero__text">
+            毎日の出来事や想いを記録して、自分だけのライフジャーナルを作りませんか？
+            このサイトでは、簡単に日記を書けるだけでなく、ハイライトの整理や気分のトラッキングもできます。
+          </p>
+          <a class="hero__cta" href="#journal">さっそく書いてみる</a>
+        </div>
+        <div class="hero__card" role="status" aria-live="polite">
+          <h3>今日の気分</h3>
+          <p id="mood-text">晴れやか</p>
+          <div class="mood-slider" aria-hidden="true">
+            <div class="mood-slider__track"></div>
+            <div class="mood-slider__thumb" id="mood-thumb"></div>
+          </div>
+          <small>時間とともにゆっくり色が変わります。</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="featured">
+      <div class="container">
+        <div class="section__header">
+          <h2>今日のハイライト</h2>
+          <p>写真やメモを添えて、記憶を鮮やかに残しましょう。</p>
+        </div>
+        <div class="highlights">
+          <article class="highlight-card">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="朝のカフェタイム" loading="lazy" />
+            <div class="highlight-card__body">
+              <h3>Morning Coffee</h3>
+              <p>静かなカフェで、ゆっくりとノートを開きながら一日をスタート。</p>
+              <span class="tag">#MorningRoutine</span>
+            </div>
+          </article>
+          <article class="highlight-card">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80" alt="散歩道の夕焼け" loading="lazy" />
+            <div class="highlight-card__body">
+              <h3>Sunset Walk</h3>
+              <p>夕日を浴びながら散歩。深呼吸をすると小さな悩みも薄れていくよう。</p>
+              <span class="tag">#Relax</span>
+            </div>
+          </article>
+          <article class="highlight-card">
+            <img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=800&q=80" alt="夜の読書" loading="lazy" />
+            <div class="highlight-card__body">
+              <h3>Night Reading</h3>
+              <p>お気に入りの本とハーブティーで、ゆったりとした夜を過ごす。</p>
+              <span class="tag">#MeTime</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--alt" id="journal">
+      <div class="container">
+        <div class="section__header">
+          <h2>デイリーノート</h2>
+          <p>その日の気持ちや出来事を自由に綴りましょう。</p>
+        </div>
+        <form id="entry-form" class="entry-form" autocomplete="off">
+          <div class="form-group">
+            <label for="entry-title">タイトル</label>
+            <input id="entry-title" name="title" type="text" required placeholder="小さな幸せ" />
+          </div>
+          <div class="form-group">
+            <label for="entry-mood">気分</label>
+            <select id="entry-mood" name="mood">
+              <option value="happy">😊 ハッピー</option>
+              <option value="calm">😌 落ち着いている</option>
+              <option value="tired">😴 ちょっと疲れた</option>
+              <option value="excited">🤩 ワクワク</option>
+              <option value="grateful">🙏 感謝でいっぱい</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="entry-content">本文</label>
+            <textarea id="entry-content" name="content" rows="4" placeholder="今日の出来事をメモ..." required></textarea>
+          </div>
+          <button type="submit" class="btn">記録する</button>
+        </form>
+        <div class="entry-list" id="entry-list" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section class="section" id="timeline">
+      <div class="container">
+        <div class="section__header">
+          <h2>過去の振り返り</h2>
+          <p>月別にスクロールして、積み重ねてきた日々を再発見しましょう。</p>
+        </div>
+        <div class="timeline" id="timeline-slider" role="list">
+          <div class="timeline__item" role="listitem">
+            <h3>1月</h3>
+            <p>新しい目標を掲げてスタートダッシュ。</p>
+          </div>
+          <div class="timeline__item" role="listitem">
+            <h3>2月</h3>
+            <p>季節のイベントを友達と楽しむ月。</p>
+          </div>
+          <div class="timeline__item" role="listitem">
+            <h3>3月</h3>
+            <p>桜を見に出かけ、写真をたくさん撮影。</p>
+          </div>
+          <div class="timeline__item" role="listitem">
+            <h3>4月</h3>
+            <p>新生活に慣れてきて、日記も習慣化。</p>
+          </div>
+          <div class="timeline__item" role="listitem">
+            <h3>5月</h3>
+            <p>自然の中でリフレッシュし、創造力が湧く。</p>
+          </div>
+        </div>
+        <div class="timeline__controls">
+          <button class="timeline__btn" data-direction="prev" aria-label="前の月">◀</button>
+          <button class="timeline__btn" data-direction="next" aria-label="次の月">▶</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; <span id="year"></span> My Daily Moments. 小さな日常を大切に。</p>
+    </div>
+  </footer>
+
+  <div class="scroll-top" id="scroll-top" role="button" aria-label="ページトップに戻る">↑</div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
